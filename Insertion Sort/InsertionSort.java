@@ -1,5 +1,5 @@
 /**
-* Inseriton_Sort algorithm implementaion in java.
+* Inseriton Sort algorithm implementaion in java.
 *
 * @author  Karansinh Thakor
 */
