@@ -16,9 +16,6 @@ class MergeSort {
         }
         int[] sortedValue = mergeSort(unsortedValue);
         System.out.println("sortedValue " + sortedValue);
-        for(int i = 0; i < sortedValue.length; i++){
-            System.out.println("num : " + sortedValue[i]);
-        }
     }
     public static int[] mergeSort(int[] list) {
         if(list.length <= 1) {
