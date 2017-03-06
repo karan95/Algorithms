@@ -24,11 +24,12 @@ class Stack {
         }
     }
     public String getValue() {
-        if (first != null) {
-            String item = first.item;
-            while (first.next != null) {
-                first = first.next;
-                item += "," + first.item;
+        Node firstCount = first;
+        if (firstCount != null) {
+            String item = firstCount.item;
+            while (firstCount.next != null) {
+                firstCount = firstCount.next;
+                item += "," + firstCount.item;
             }
             return item;
         } else {
