@@ -47,11 +47,11 @@ public class WeightedQuickUnion {
         count--;
     }
 
-    public static void main(String[] args) {
-        WeightedQuickUnion uf = new WeightedQuickUnion(10);
-        uf.union(1,2);
-        uf.union(2,3);
-        uf.union(1,5);
-        System.out.println("check:"+uf.count);
-    }
+    /* public static void main(String[] args) {
+     *   WeightedQuickUnion uf = new WeightedQuickUnion(10);
+     *   uf.union(1,2);
+     *   uf.union(2,3);
+     *   uf.union(1,5);
+     *   System.out.println("check:"+uf.count);
+     * } */
 }
