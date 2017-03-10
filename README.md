@@ -1,2 +1,2 @@
 # Algorithms
-Sample algorithms for learning
+Algorithms implementation using Java.
