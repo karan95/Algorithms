@@ -19,6 +19,10 @@ class LinearProbingHash<Key, Value> {
     public boolean isEmpty() {
         return size() == 0;
     }
+    public boolean contains(Key key) {
+        if (key == null) throw new IllegalArgumentException("argument to contains is null");
+        return get(key) != null;
+    }
     private int hash(Key key) {
         return (key.hashCode() & 0x7fffffff) % m;
     }
@@ -32,10 +36,6 @@ class LinearProbingHash<Key, Value> {
         keys = temp.keys;
         vals = temp.vals;
         m = temp.m;
-    }
-    public boolean contains(Key key) {
-        if (key == null) throw new IllegalArgumentException("argument to contains is null");
-        return get(key) != null;
     }
     public void put(Key key, Value value) {
         if (key == null) throw new IllegalArgumentException("key in argument is null(get)");
@@ -91,6 +91,26 @@ class LinearProbingHash<Key, Value> {
 
         // halves size of array if 1/8 full or less
         if (n > 0 && n <= m/8) resize(m/2);
+    }
+    
+    // integrity check
+    private boolean check() {
+
+        // check that hash table is at most 50% full
+        if (m < 2*n) {
+            System.err.println("Hash table size m = " + m + "; array size n = " + n);
+            return false;
+        }
+
+        // check that each key in table can be found by get()
+        for (int i = 0; i < m; i++) {
+            if (keys[i] == null) continue;
+            else if (get(keys[i]) != vals[i]) {
+                System.err.println("get[" + keys[i] + "] = " + get(keys[i]) + "; vals[i] = " + vals[i]);
+                return false;
+            }
+        }
+        return true;
     }
     public static void main(String args[]) {
         LinearProbingHash<String, String> hashTable = new LinearProbingHash<String, String>(2);
