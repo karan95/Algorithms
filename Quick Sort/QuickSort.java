@@ -39,11 +39,30 @@ class QuickSort {
         a[i] = a[j];
         a[j] = temp;
     }
+    public static void show() {
+        for (int i = 0; i < a.length; i++) {
+            System.out.println(a[i]);
+        }
+    }
+    public static Comparable select(Comparable[] a, int k) {
+        if (k < 0 || k >= a.length) {
+            throw new IndexOutOfBoundsException("Selected element out of bounds");
+        }
+        int lo = 0, hi = a.length - 1;
+        while (hi > lo) {
+            int i = partition(a, lo, hi);
+            if      (i > k) hi = i - 1;
+            else if (i < k) lo = i + 1;
+            else return a[i];
+        }
+        return a[lo];
+    }
     public static void main(String[] args) {    
         String[] a = {"z","a","h","s","o"};
         QuickSort.sort(a);
         for (int i = 0; i < a.length; i++) {
-            System.out.println(a[i]);
+            String ith = (String) QuickSort.select(a, i);
+            System.out.println(ith);
         }
     }
 }
